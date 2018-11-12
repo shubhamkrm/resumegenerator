@@ -1,0 +1,14 @@
+<?php
+
+return [
+	'template_path' => './templates/plasmatti/',
+	'require_fonts' => true,
+	'template' => [
+		'bulleted_list' => 'bulletedList.template.php',
+		'personal' => 'personal.template.php',
+		'workex' => 'workex.template.php',
+		'education' => 'education.template.php',
+		'yearlist' => 'yearlist.template.php',
+		'final' => 'resume.template.php'
+	]
+];

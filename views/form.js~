@@ -1,0 +1,5 @@
+function bulleted_list_add(b) {
+	var parent = b.parentElement;
+}
+
+docume

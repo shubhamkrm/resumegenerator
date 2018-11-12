@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Resume Generator</title>
+	<link rel="stylesheet" href="views/style.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+	<header>
+		<h1 class="main-header">Resume Generator</h1>
+	</header>
+
+	<form method="POST" action="processor.php">
+		<fieldset class="form-group" >
+			<legend>Personal Information</legend>
+			<input type="hidden" name="personal[title]" value="Personal Information">
+			<input type="hidden" name="personal[type]" value="personal">
+			<div class="form-row">
+				<div class="col-md-5">
+					<label for="personal[name]">Name</label>
+					<input class="form-control" type="text" name="personal[name]">
+				</div>
+				<div class="col-md-7">
+					<label for="personal-address">Address</label>
+					<input class="form-control" type="text" name="personal[address]">
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="col-md-5">
+					<label for="personal-phone">Phone</label>
+					<input class="form-control" type="text" name="personal[phone]">
+				</div>
+				<div class="col-md-7">
+					<label for="personal-email">Email</label>
+					<input class="form-control" type="email" name="personal[email]">
+				</div>
+			</div>
+		</fieldset>
+
+		<fieldset class="form-group">
+			<legend>Skills</legend>
+			<input type="hidden" name="skills[title]" value="Skills">
+			<input type="hidden" name="skills[type]" value="bulleted_list">
+			<div id="skills" class="flow form-row repeat-parent" data-count="6" data-name="skills">
+				<input class="form-control col-md-4" type="text" name="skills[0]">
+				<input class="form-control col-md-4" type="text" name="skills[1]">
+				<input class="form-control col-md-4" type="text" name="skills[2]">
+				<input class="form-control col-md-4" type="text" name="skills[3]">
+				<input class="form-control col-md-4" type="text" name="skills[4]">
+				<input class="form-control col-md-4" type="text" name="skills[5]">
+			</div>
+			<button type="button" class="btn btn-primary add bulleted-list-add"> + </button>
+		</fieldset>
+
+		<fieldset class="form-group">
+			<legend>Education</legend>
+			<input type="hidden" name="education[title]" value="Education">
+			<input type="hidden" name="education[type]" value="education">
+			<div id="education" class="repeat-parent" data-count="1">
+				<fieldset class="repeatable row">
+					<legend>Education 1</legend>
+					<div class="textbox col-md-8">
+						<label for="degree">Degree</label>
+						<input class="form-control" type="text" name="education[0][degree]">
+					</div>
+					<div class="textbox col-md-4">
+						<label for="time">Time</label>
+						<input class="form-control" type="text" name="education[0][time]">
+					</div>
+
+					<div class="textbox col-md-8">
+						<label for="institution">Institution</label>
+						<input class="form-control" type="text" name="education[0][institution]">
+					</div>
+					<div class="textbox col-md-4">
+						<label for="percentage">Percentage</label>
+						<input class="form-control" type="text" name="education[0][percent_val]">
+					</div>
+				</fieldset>
+			</div>
+				<button type="button" class="btn btn-primary add education-add"> + </button>
+		</fieldset>
+
+		<fieldset class="form-group">
+			<legend>Work Experience</legend>
+			<input type="hidden" name="workex[title]" value="Work Experience">
+			<input type="hidden" name="workex[type]" value="workex">
+			<div id="workex" class="repeat-parent" data-count="1">
+				<fieldset class="repeatable row">
+				<legend>Experience 1</legend>
+					<div class="textbox col-md-4">
+						<label for="time">Time</label>
+						<input class="form-control" type="text" name="workex[0][time]">
+					</div>
+					<div class="textbox col-md-4">
+						<label for="designation">Designation</label>
+						<input class="form-control" type="text" name="workex[0][designation]">
+					</div>
+					<div class="textbox col-md-4">
+						<label for="organisation">Organisation</label>
+						<input class="form-control" type="text" name="workex[0][organisation]">
+					</div>
+					<div class="textbox col-md-12">
+						<label for="description">Description</label>
+						<textarea class="form-control" name="workex[0][desc]" cols="50" rows="3">
+						</textarea>
+					</div>
+				</fieldset>
+			</div>
+			<button type="button" class="btn btn-primary add workex-add"> + </button>
+		</fieldset>
+
+		<fieldset class="form-group">
+			<legend>Achievements</legend>
+			<input type="hidden" name="achievements[title]" value="Achievements">
+			<input type="hidden" name="achievements[type]" value="yearlist">
+			<table id="achievemets" data-count="3">
+				<thead>
+					<tr>
+						<th> Year </th>
+						<th> Achievement </th>
+					</tr>
+				</thead>
+				<tbody class="repeat-parent" >
+					<tr>
+						<td class="yearlist-year"><input class="form-control" type="text" name="achievements[0][time]"></td>
+						<td class="yearlist-desc"><input class="form-control" type="text" name="achievements[0][desc]"></td>
+					</tr>
+					<tr>
+						<td class="yearlist-year"><input class="form-control" type="text" name="achievements[1][time]"></td>
+						<td class="yearlist-desc"><input class="form-control" type="text" name="achievements[1][desc]"></td>
+					</tr>
+					<tr>
+						<td class="yearlist-year"><input class="form-control" type="text" name="achievements[2][time]"></td>
+						<td class="yearlist-desc"><input class="form-control" type="text" name="achievements[2][desc]"></td>
+					</tr>
+				</tbody>
+			</table>
+			<button type="button" class="btn btn-primary add yearlist-add"> + </button>
+		</fieldset>
+
+		<fieldset class="form-group">
+			<legend>Interests</legend>
+			<input type="hidden" name="interests[title]" value="Interests">
+			<input type="hidden" name="interests[type]" value="bulleted_list">
+			<div id="interests" class="flow form-row repeat-parent" data-count="6" data-name="interests">
+				<input class="form-control col-md-4" type="text" name="interests[0]">
+				<input class="form-control col-md-4" type="text" name="interests[1]">
+				<input class="form-control col-md-4" type="text" name="interests[2]">
+				<input class="form-control col-md-4" type="text" name="interests[3]">
+				<input class="form-control col-md-4" type="text" name="interests[4]">
+				<input class="form-control col-md-4" type="text" name="interests[4]">
+			</div>
+			<button type="button" class="btn btn-primary add bulleted-list-add"> + </button>
+		</fieldset>
+
+		<input type="submit" value="Create" class="btn btn-primary"></input>
+	</form>
+	<script src="views/form.js"></script>
+</body>
+</html>
